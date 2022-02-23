@@ -6,20 +6,22 @@ import { Store } from '../Context/Context.Store'
 
 
 function Product(props) {
-  const data = useContext( Store )
-  console.log(data, 'from products')
+  const {products, addToCart, cart} = useContext( Store )
+  console.log('from products', cart)
   
+
+
   return (
     <div className="Product">
       {
-        data.map(product => (
+        products.map(product => (
           <div className="main__card" key={product.id}>
             <img src={img1}/>
             <div className="main__card--content">
               <h4>{product.title}</h4>
               <div className="main__card--price">
                 <p className="main__card--item-price">$ {product.price}</p>
-                <button className="btn">Add to cart</button>
+                <button className="btn" onClick={ addToCart }>Add to cart</button>
               </div>
             </div>
           </div>

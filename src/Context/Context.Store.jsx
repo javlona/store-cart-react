@@ -55,10 +55,15 @@ function StoreContext(props) {
         },
     ])
 
+    const [cartItems, setCartItems] = useState([])
+
+    const addToCart = (newItem) => {
+        setCartItems([...cartItems, newItem])
+    }
     //console.log(items, 'props from context')
 
     return (
-        <Store.Provider value={items}>
+        <Store.Provider value={{products: items, addToCart, cart: cartItems}}>
             {
                 props.children
             }
