@@ -8,7 +8,7 @@
 }
 
 .cart__container {
-  width: 200px;
-  background: #eee;
-  border-radius: 30px;
+  width: 280px;
+  border-radius: 10px;
+  border: 1px solid rgb(211, 211, 211);
 }

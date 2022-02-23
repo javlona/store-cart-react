@@ -50,6 +50,36 @@ const Container = sty.div`
         font-size: 15px;
         font-weight: 500;
     }
+    .cart__container {
+        padding: 20px;
+        .cart__card {
+            display: flex;
+            margin-bottom: 10px; 
+        }
+        .cart__info {
+            margin-left: 10px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            p {
+                font-weight: 500;
+            }
+        }
+        .cart__title {
+            display: flex;
+            flex-direction: column;
+        }
+        .cart__action{
+            display: flex;
+            margin-top: 10px;
+        }
+        .cart__action > * {
+            width: 30px;
+        }
+        img {
+            width: 50px;
+        }
+    }
 
 `
 
