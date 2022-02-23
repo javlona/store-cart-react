@@ -1,20 +1,30 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Container from './style'
 import img1 from '../assets/1.jpg'
+import { Store } from '../Context/Context.Store'
 
-function Product() {
+
+
+function Product(props) {
+  const data = useContext( Store )
+  console.log(data, 'from products')
+  
   return (
     <div className="Product">
-      <div className="main__card">
-          <img src={img1}/>
-          <div className="main__card--content">
-            <h4>Sneakers</h4>
-            <div className="main__card--price">
-              <p className="main__card--item-price">$69.99</p>
-              <button className="btn">Add to cart</button>
+      {
+        data.map(product => (
+          <div className="main__card" key={product.id}>
+            <img src={img1}/>
+            <div className="main__card--content">
+              <h4>{product.title}</h4>
+              <div className="main__card--price">
+                <p className="main__card--item-price">$ {product.price}</p>
+                <button className="btn">Add to cart</button>
+              </div>
             </div>
           </div>
-        </div>
+        ))
+      }
     </div>
   )
 }

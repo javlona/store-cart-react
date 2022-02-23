@@ -32,8 +32,14 @@ const Container = sty.div`
     .header__links li:hover {
         text-decoration: underline;
     }
+    .Product {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
     .main__card {
         width: 160px;
+        margin: 10px 0;
     }
     .main__card--price {
         margin-top: 10px;

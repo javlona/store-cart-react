@@ -1,8 +1,13 @@
 import React from 'react'
+import Container from './style'
 
 function Cart() {
   return (
-    <div>Cart</div>
+    <Container>
+      <div className="cart__container">
+        shopping cart
+      </div>
+    </Container>
   )
 }
 

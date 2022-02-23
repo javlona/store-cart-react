@@ -2,3 +2,13 @@
 .App {
   text-align: center;
 }
+
+.body {
+  display: flex;
+}
+
+.cart__container {
+  width: 200px;
+  background: #eee;
+  border-radius: 30px;
+}
