@@ -72,6 +72,10 @@ const Container = sty.div`
         .cart__action{
             display: flex;
             margin-top: 10px;
+            .delete_btn {
+                margin-left: 4px;
+                background: #D3475D;
+            }
         }
         .cart__action > * {
             width: 30px;
