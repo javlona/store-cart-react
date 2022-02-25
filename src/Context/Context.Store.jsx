@@ -55,6 +55,7 @@ function StoreContext(props) {
   ]);
 
   const [cartItems, setCartItems] = useState([]);
+  const [total, setTotal] = useState([]);
 
   const addToCart = (addedItem) => {
     const isItemExist =
@@ -102,8 +103,9 @@ function StoreContext(props) {
     const sum = cartItems.map(item => (
       item.data.price * item.saleQty
     ))
-
-    return sum.reduce((i, j) => i+j, 0 )
+    
+    setTotal(sum.reduce((i, j) => i+j, 0 ))
+    console.log(sum.reduce((i, j) => i+j, 0 ))
   }
  
   console.log(cartItems);
@@ -116,7 +118,9 @@ function StoreContext(props) {
                 addQtyHandler,
                 deleteHandler,
                 changeHandler,
-                getTotalPrice }}
+                getTotalPrice,
+                total
+               }}
     >
       {props.children}
     </Store.Provider>

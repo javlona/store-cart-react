@@ -5,10 +5,10 @@ import images from "../assets/images";
 import { MdDelete } from "react-icons/md";
 
 function Cart() {
-  const { cart, addQtyHandler, deleteHandler, changeHandler, getTotalPrice } = useContext(Store);
+  const { cart, addQtyHandler, deleteHandler, changeHandler, getTotalPrice, total } = useContext(Store);
   //console.log( cart )
 
-  console.log(cart)
+
   return (
     <Container>
       <div className="cart__container">
@@ -63,10 +63,10 @@ function Cart() {
           </div>
           <div className="cart__total">
             <p className="cart__total--heading">Total</p>
-            <p className="cart__total--price">$ 5.99</p>
+            <p className="cart__total--price">$ {total}</p>
           </div>
         </div>
-        <button className="btn" onClick={() => getTotalPrice(cart)}>Place order</button>
+        <button className="btn" onClick={() => getTotalPrice()}>Place order</button>
       </div>
     </Container>
   );
