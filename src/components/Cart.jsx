@@ -5,9 +5,10 @@ import images from "../assets/images";
 import { MdDelete } from "react-icons/md";
 
 function Cart() {
-  const { cart, addQtyHandler, deleteHandler } = useContext(Store);
+  const { cart, addQtyHandler, deleteHandler, changeHandler, getTotalPrice } = useContext(Store);
   //console.log( cart )
 
+  console.log(cart)
   return (
     <Container>
       <div className="cart__container">
@@ -29,6 +30,7 @@ function Cart() {
                     type="text"
                     className="cart__input"
                     value={item.saleQty}
+                    onChange={ changeHandler }
                   ></input>
                   <button
                     type="button"
@@ -50,6 +52,21 @@ function Cart() {
             </div>
           </div>
         ))}
+        <div className="cart__checkout-price">
+          <div className="cart__sub-total">
+            <p className="cart__sub-total--heading">Subtotal</p>
+            <p className="cart__sub-total--price">$ 111</p>
+          </div>
+          <div className="cart__shipping">
+            <p className="cart__shipping--heading">Shipping</p>
+            <p className="cart__shipping--price">$ 5.99</p>
+          </div>
+          <div className="cart__total">
+            <p className="cart__total--heading">Total</p>
+            <p className="cart__total--price">$ 5.99</p>
+          </div>
+        </div>
+        <button className="btn" onClick={() => getTotalPrice(cart)}>Place order</button>
       </div>
     </Container>
   );

@@ -54,7 +54,11 @@ const Container = sty.div`
         padding: 20px;
         .cart__card {
             display: flex;
-            margin-bottom: 10px; 
+            margin-bottom: 10px;
+            img {
+                border-radius: 4px;
+                border: 1px solid #eee;
+            }
         }
         .cart__info {
             margin-left: 10px;
@@ -82,6 +86,36 @@ const Container = sty.div`
         }
         img {
             width: 50px;
+        }
+        .cart__checkout-price {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #7b7b7b;
+            .cart__sub-total, .cart__shipping {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                margin: 10px 0;
+                p {
+                    color: #7b7b7b;
+                    font-size: 14px;
+                }
+            }
+            .cart__shipping {
+                padding-bottom: 20px;
+            }
+            .cart__total {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                border-top: 1px solid #7b7b7b;
+                padding: 20px 0;
+                .cart__total--price {
+                    font-size: 20px;
+                    font-weight: 500;
+                }
+            }
+            
         }
     }
 

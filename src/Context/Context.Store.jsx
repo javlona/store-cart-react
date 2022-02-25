@@ -77,7 +77,7 @@ function StoreContext(props) {
       item.data.id === id
         ? {
             ...item,
-            saleQty: sign === "+" ? 
+            saleQty : sign === "+" ? 
                 item.saleQty + 1 : item.saleQty === 1 ? item.saleQty :
                 item.saleQty - 1 
           }
@@ -87,6 +87,25 @@ function StoreContext(props) {
     setCartItems(updated);
   };
 
+  const deleteHandler = (id) => {
+    const updated = cartItems.filter((item) => item.id !== id)
+    setCartItems( {data: updated} )
+  }
+
+  const changeHandler = (e) => {
+    const { value } = e.target
+    console.log(e)
+  }
+
+
+  const getTotalPrice = () => {
+    const sum = cartItems.map(item => (
+      item.data.price * item.saleQty
+    ))
+
+    return sum.reduce((i, j) => i+j, 0 )
+  }
+ 
   console.log(cartItems);
 
   return (
@@ -94,7 +113,10 @@ function StoreContext(props) {
       value={{  products: items, 
                 addToCart, 
                 cart: cartItems, 
-                addQtyHandler }}
+                addQtyHandler,
+                deleteHandler,
+                changeHandler,
+                getTotalPrice }}
     >
       {props.children}
     </Store.Provider>
