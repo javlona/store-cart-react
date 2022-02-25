@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 
 const Store = createContext();
 
@@ -57,6 +57,10 @@ function StoreContext(props) {
   const [cartItems, setCartItems] = useState([]);
   const [total, setTotal] = useState([]);
 
+  useEffect(() => {
+    getTotalPrice()
+  }, [cartItems])
+
   const addToCart = (addedItem) => {
     const isItemExist =
       cartItems.length && cartItems.find((i) => i.data.id === addedItem.id);
@@ -89,8 +93,8 @@ function StoreContext(props) {
   };
 
   const deleteHandler = (id) => {
-    const updated = cartItems.filter((item) => item.id !== id)
-    setCartItems( {data: updated} )
+    const updated = cartItems.filter((item) => item.data.id !== id)
+    setCartItems( updated )
   }
 
   const changeHandler = (e) => {
@@ -100,12 +104,16 @@ function StoreContext(props) {
 
 
   const getTotalPrice = () => {
-    const sum = cartItems.map(item => (
-      item.data.price * item.saleQty
-    ))
+    const total = cartItems.reduce((prev, current) => {
+      let sum = current.data.price * current.saleQty
+      return sum + prev
+    }, 0)
     
-    setTotal(sum.reduce((i, j) => i+j, 0 ))
-    console.log(sum.reduce((i, j) => i+j, 0 ))
+    // const sum = cartItems.map(item => (
+    //   item.data.price * item.saleQty
+    // ))
+    //setTotal(sum.reduce((i, j) => i+j, 0 ))
+    setTotal(total)
   }
  
   console.log(cartItems);
